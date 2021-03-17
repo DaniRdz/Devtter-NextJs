@@ -10,6 +10,25 @@
   width: 100%;
   height: 100%;
 }
+.homeContainer{
+  display: grid;
+  height: 100%;
+  place-content: center;
+  place-items: center;
+}
+.logo {
+  width: 120px
+}
+.title{
+  font-weight: 800;
+  color: var(--Primary);
+
+}
+.subtitle {
+  font-size: 18px;
+  color: var(--Secondary);
+
+}
 
 @media(min-width : 520px) {
   .container{
