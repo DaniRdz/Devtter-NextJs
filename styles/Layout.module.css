@@ -1,0 +1,19 @@
+.wrapper {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+.container {
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 520px) {
+  .container {
+    height: 90vh;
+    width: 520px;
+  }
+}

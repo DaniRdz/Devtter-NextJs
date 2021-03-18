@@ -14,7 +14,6 @@ firebase.apps.length === 0 && firebase.initializeApp(firebaseConfig);
 
 const mapUserFromFirebase = (user) => {
   const { displayName, email, photoURL } = user;
-  console.log("user", user);
 
   return {
     avatar: photoURL,
@@ -25,7 +24,7 @@ const mapUserFromFirebase = (user) => {
 
 export const onAuthStateChange = (onChange) => {
   return firebase.auth().onAuthStateChanged((user) => {
-    const normalizedUser = mapUserFromFirebase(user);
+    const normalizedUser = user ? mapUserFromFirebase(user) : null;
     onChange(normalizedUser);
   });
 };
