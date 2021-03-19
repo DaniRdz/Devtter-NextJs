@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import AppLayout from "components/appLayout";
-import Avatar from "components/avatar";
+import Deveet from "components/deveet";
 
 import styles from "styles/TimeLine.module.css";
 export default function Home() {
@@ -19,14 +19,15 @@ export default function Home() {
       </header>
       <section className={styles.timeLine}>
         {timeline.map((deveet) => {
+          const { id, avatar, message, username } = deveet;
           return (
-            <article key={deveet.id}>
-              <Avatar alt={deveet.username} src={deveet.avatar} />
-              <div>
-                <strong>{deveet.username}</strong>
-                <p>{deveet.message}</p>
-              </div>
-            </article>
+            <Deveet
+              key={id}
+              avatar={avatar}
+              message={message}
+              username={username}
+              id={id}
+            />
           );
         })}
       </section>

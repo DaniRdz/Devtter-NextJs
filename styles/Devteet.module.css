@@ -1,0 +1,13 @@
+.devteetContainer {
+  display: flex;
+  padding: 10px 15px;
+  border-bottom: solid 1px #ccc;
+}
+
+.devteetAvatar {
+  padding-right: 10px;
+}
+.devteetMessage {
+  line-height: 1.3125;
+  margin: 0;
+}
