@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import Button from "components/botton";
 import Avatar from "components/avatar";
@@ -11,20 +12,19 @@ import styles from "styles/Home.module.css";
 
 export default function Home() {
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     onAuthStateChange(setUser);
   }, []);
+
+  useEffect(() => {
+    user && router.replace("/home");
+  }, [user]);
   const handleClick = () => {
-    loggingWithGitHub()
-      .then((user) => {
-        const { avatar, url, username } = user;
-        setUser(user);
-        console.log(user);
-      })
-      .catch((err) => {
-        console.log("handleClick err", err);
-      });
+    loggingWithGitHub().catch((err) => {
+      console.log("handleClick err", err);
+    });
   };
   return (
     <AppLayout>
