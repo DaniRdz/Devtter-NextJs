@@ -6,16 +6,14 @@ import Deveet from "components/deveet";
 import useUser from "hooks/useUser";
 
 import styles from "styles/TimeLine.module.css";
+import { fetchLatestDeveets } from "firebase/client";
 
 export default function Home() {
   const [timeline, setTimeline] = useState([]);
   const user = useUser();
 
   useEffect(() => {
-    user &&
-      fetch("http://localhost:3000/api/statuses/home_timeline")
-        .then((res) => res.json())
-        .then(setTimeline);
+    user && fetchLatestDeveets().then(setTimeline);
   }, [user]);
 
   return (
@@ -25,14 +23,15 @@ export default function Home() {
       </header>
       <section className={styles.timeLine}>
         {timeline.map((deveet) => {
-          const { id, avatar, message, username } = deveet;
+          const { userId, avatar, content, userName, createdAt } = deveet;
           return (
             <Deveet
-              key={id}
+              key={userId}
               avatar={avatar}
-              message={message}
-              username={username}
-              id={id}
+              content={content}
+              userName={userName}
+              userId={userId}
+              createdAt={createdAt}
             />
           );
         })}
