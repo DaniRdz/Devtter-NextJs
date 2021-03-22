@@ -6,17 +6,15 @@ import Button from "components/botton";
 import Avatar from "components/avatar";
 import AppLayout from "components/appLayout";
 
-import { loggingWithGitHub, onAuthStateChange } from "firebase/client";
+import { loggingWithGitHub } from "firebase/client";
+
+import useUser, { USER_STATES } from "hooks/useUser";
 
 import styles from "styles/Home.module.css";
 
 export default function Home() {
-  const [user, setUser] = useState(null);
+  const user = useUser();
   const router = useRouter();
-
-  useEffect(() => {
-    onAuthStateChange(setUser);
-  }, []);
 
   useEffect(() => {
     user && router.replace("/home");
@@ -39,9 +37,10 @@ export default function Home() {
         <h2 className={styles.subtitle}>
           Talk About Developement With Developers...
         </h2>
-        {user === null && (
+        {user === USER_STATES.NOT_LOGGED && (
           <Button onClick={handleClick}>Loggin With GitHub</Button>
         )}
+        {user === USER_STATES.NOT_KNOWN && <div>...Loading</div>}
         {user && user.avatar && (
           <div>
             <Avatar
