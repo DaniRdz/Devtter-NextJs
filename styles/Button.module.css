@@ -1,14 +1,26 @@
 .btn {
-    background-color: var(--Primary);
-    color: #fff;
-    cursor: pointer;
-    border-radius: 9999px;
-    font-size: 16px;
-    font-weight: 800;
-    padding: 8px 24px;
-    transition: opacity 0.3s ease;
-    border: 1px solid var(--Secondary);
+  background-color: var(--Primary);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 8px 24px;
+  transition: opacity 0.3s ease;
+  border: 1px solid var(--Secondary);
+  user-select: none;
+}
+.btn:disabled {
+  opacity: 0.2;
+  pointer-events: none;
 }
 .btn:hover {
-    opacity: .7;
+  opacity: 0.7;
+}
+
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  transform: translateY(2px);
 }
