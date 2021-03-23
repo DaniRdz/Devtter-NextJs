@@ -58,11 +58,8 @@ export const fetchLatestDeveets = () => {
         const data = doc.data();
         const id = doc.id;
         const { createdAt } = data;
-        const intl = new Intl.DateTimeFormat("en-US");
-        const normalizeCreatedAt = intl.format(
-          new Date(createdAt.seconds * 1000)
-        );
-        return { ...data, id, createdAt: normalizeCreatedAt };
+
+        return { ...data, id, createdAt: +createdAt.toDate() };
       });
     });
 };

@@ -23,10 +23,10 @@ export default function Home() {
       </header>
       <section className={styles.timeLine}>
         {timeline.map((deveet) => {
-          const { userId, avatar, content, userName, createdAt } = deveet;
+          const { userId, avatar, content, userName, createdAt, id } = deveet;
           return (
             <Deveet
-              key={userId}
+              key={id}
               avatar={avatar}
               content={content}
               userName={userName}

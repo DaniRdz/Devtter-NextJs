@@ -1,5 +1,7 @@
 import Avatar from "components/avatar";
 
+import useTimeAgo from "hooks/useTimeAgo";
+
 import styles from "styles/Devteet.module.css";
 
 export default function Deveet({
@@ -9,6 +11,7 @@ export default function Deveet({
   avatar,
   createdAt,
 }) {
+  const timeAgo = useTimeAgo(createdAt);
   return (
     <article className={styles.devteetContainer}>
       <div className={styles.devteetAvatar}>
@@ -17,10 +20,10 @@ export default function Deveet({
       <section>
         <header className={styles.header}>
           <strong>{userName}</strong>
-          <span> - </span>
-          <date>{createdAt}</date>
-          <p className={styles.devteetMessage}>{content}</p>
+          <span>-</span>
+          <div>{timeAgo}</div>
         </header>
+        <p className={styles.devteetMessage}>{content}</p>
       </section>
     </article>
   );
