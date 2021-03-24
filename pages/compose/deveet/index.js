@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import AppLayout from "components/appLayout";
 import Botton from "components/botton";
@@ -53,6 +54,9 @@ export default function ComposeDeveet() {
     message.length === 0 || composeStatus === COMPOSE_STATE.LOADDING;
   return (
     <AppLayout>
+      <Head>
+        <title>Compose Deveet | Devtter</title>
+      </Head>
       <form onSubmit={handleSubmit}>
         <textarea
           className={styles.deveetTextarea}

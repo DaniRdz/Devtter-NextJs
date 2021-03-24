@@ -4,6 +4,8 @@
   place-items: center;
 }
 .container {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
