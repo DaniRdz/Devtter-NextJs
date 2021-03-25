@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import AppLayout from "components/appLayout";
 import Botton from "components/botton";
+import Avatar from "components/avatar";
 
 import useUser from "hooks/useUser";
 
@@ -101,35 +102,40 @@ export default function ComposeDeveet() {
       <Head>
         <title>Compose Deveet | Devtter</title>
       </Head>
-      <form className={styles.deveetComposeContainer} onSubmit={handleSubmit}>
-        <textarea
-          className={
-            drag === DRAG_IMAGE_STATE.DRAG_OVER
-              ? styles.deveetTextareaDrop
-              : styles.deveetTextarea
-          }
-          placeholder="What's going on?"
-          value={message}
-          onChange={handleChange}
-          onDragEnter={handleDragEnter}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-        ></textarea>
-        {imgURL && (
-          <div className={styles.dropImageContainer}>
-            <button
-              className={styles.deleteBtn}
-              onClick={() => setImgURL(null)}
-            >
-              x
-            </button>
-            <img className={styles.dropImage} src={imgURL} />
-          </div>
-        )}
-        <div className={styles.btn}>
-          <Botton disabled={isButtonDisabled}>Deveetear</Botton>
+      <section className={styles.composeDeveetWrapper}>
+        <div className={styles.avatarImg}>
+          {user && <Avatar src={user.avatar} />}
         </div>
-      </form>
+        <form className={styles.deveetComposeContainer} onSubmit={handleSubmit}>
+          <textarea
+            className={
+              drag === DRAG_IMAGE_STATE.DRAG_OVER
+                ? styles.deveetTextareaDrop
+                : styles.deveetTextarea
+            }
+            placeholder="What's going on?"
+            value={message}
+            onChange={handleChange}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+          ></textarea>
+          {imgURL && (
+            <div className={styles.dropImageContainer}>
+              <button
+                className={styles.deleteBtn}
+                onClick={() => setImgURL(null)}
+              >
+                x
+              </button>
+              <img className={styles.dropImage} src={imgURL} />
+            </div>
+          )}
+          <div className={styles.btn}>
+            <Botton disabled={isButtonDisabled}>Deveetear</Botton>
+          </div>
+        </form>
+      </section>
     </AppLayout>
   );
 }
