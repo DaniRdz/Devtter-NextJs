@@ -37,12 +37,13 @@ export const loggingWithGitHub = () => {
   return firebase.auth().signInWithPopup(gitHubProvider);
 };
 
-export const addDeveet = ({ avatar, content, userId, userName }) => {
+export const addDeveet = ({ avatar, content, userId, userName, img }) => {
   return db.collection("deveets").add({
     avatar,
     userName,
     userId,
     content,
+    img,
     createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
     likesCount: 0,
     shareCount: 0,
@@ -63,4 +64,10 @@ export const fetchLatestDeveets = () => {
         return { ...data, id, createdAt: +createdAt.toDate() };
       });
     });
+};
+
+export const uploadImage = (file) => {
+  const ref = firebase.storage().ref(`images/${file.name}`);
+  const task = ref.put(file);
+  return task;
 };

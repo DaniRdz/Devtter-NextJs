@@ -31,7 +31,15 @@ export default function Home() {
       </header>
       <section className={styles.timeLine}>
         {timeline.map((deveet) => {
-          const { userId, avatar, content, userName, createdAt, id } = deveet;
+          const {
+            userId,
+            avatar,
+            img,
+            content,
+            userName,
+            createdAt,
+            id,
+          } = deveet;
           return (
             <Deveet
               key={id}
@@ -40,6 +48,7 @@ export default function Home() {
               userName={userName}
               userId={userId}
               createdAt={createdAt}
+              img={img}
             />
           );
         })}

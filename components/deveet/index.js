@@ -10,6 +10,7 @@ export default function Deveet({
   content,
   avatar,
   createdAt,
+  img,
 }) {
   const timeAgo = useTimeAgo(createdAt);
   return (
@@ -24,6 +25,7 @@ export default function Deveet({
           <div>{timeAgo}</div>
         </header>
         <p className={styles.devteetMessage}>{content}</p>
+        {img && <img className={styles.image} src={img} />}
       </section>
     </article>
   );
