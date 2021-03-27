@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import AppLayout from "components/appLayout";
 import Botton from "components/botton";
 import Avatar from "components/avatar";
 
@@ -98,7 +97,7 @@ export default function ComposeDeveet() {
   const isButtonDisabled =
     message.length === 0 || composeStatus === COMPOSE_STATE.LOADDING;
   return (
-    <AppLayout>
+    <>
       <Head>
         <title>Compose Deveet | Devtter</title>
       </Head>
@@ -136,6 +135,6 @@ export default function ComposeDeveet() {
           </div>
         </form>
       </section>
-    </AppLayout>
+    </>
   );
 }

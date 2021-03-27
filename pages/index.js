@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 import Button from "components/botton";
 import Avatar from "components/avatar";
-import AppLayout from "components/appLayout";
 
 import { loggingWithGitHub } from "firebase/client";
 
@@ -25,7 +24,7 @@ export default function Home() {
     });
   };
   return (
-    <AppLayout>
+    <>
       <Head>
         <title>Devtter</title>
         <link rel="icon" href="/favicon.ico" />
@@ -51,6 +50,6 @@ export default function Home() {
           </div>
         )}
       </div>
-    </AppLayout>
+    </>
   );
 }

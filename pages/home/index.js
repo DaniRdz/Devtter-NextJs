@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-import AppLayout from "components/appLayout";
 import Deveet from "components/deveet";
 import Create from "components/icons/create";
 import HomeIcon from "components/icons/home";
@@ -22,7 +21,7 @@ export default function Home() {
   }, [user]);
 
   return (
-    <AppLayout>
+    <>
       <Head>
         <title>Inicio | Devtter</title>
       </Head>
@@ -70,6 +69,6 @@ export default function Home() {
           </a>
         </Link>
       </nav>
-    </AppLayout>
+    </>
   );
 }
