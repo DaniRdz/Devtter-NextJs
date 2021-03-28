@@ -3,16 +3,15 @@ import Deveet from "components/deveet";
 export default function DeveetPage(props) {
   return <Deveet {...props} />;
 }
-
-DeveetPage.getInitialProps = (context) => {
-  const { query, res } = context;
-  const { id } = query;
-  return fetch(`http://localhost:3000/api/deveets/${id}`).then((apiRes) => {
-    if (apiRes.ok) {
-      return apiRes.json();
-    }
-    if (res) {
-      res.writeHead(301, { Location: "/home" }).end();
-    }
-  });
-};
+export async function getServerSideProps(context) {
+  const { params, res } = context;
+  const { id } = params;
+  const apiRes = await fetch(`http://localhost:3000/api/deveets/${id}`);
+  if (apiRes.ok) {
+    const props = await apiRes.json();
+    return { props };
+  }
+  if (res) {
+    res.writeHead(301, { Location: "/home" }).end();
+  }
+}
