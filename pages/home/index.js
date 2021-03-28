@@ -47,6 +47,7 @@ export default function Home() {
               userName={userName}
               userId={userId}
               createdAt={createdAt}
+              id={id}
               img={img}
             />
           );

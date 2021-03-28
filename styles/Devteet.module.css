@@ -2,6 +2,10 @@
   display: flex;
   padding: 10px 15px;
   border-bottom: solid 1px #ccc;
+  cursor: pointer;
+}
+.devteetContainer:hover {
+  background: #f5f8fa;
 }
 
 .devteetAvatar {
@@ -21,9 +25,13 @@
   margin: 0px 5px 0px 5px;
 }
 
-.header > div {
+.header > time {
+  cursor: pointer;
   font-size: 14px;
   color: #cbcbcb;
+}
+.header > time:hover {
+  text-decoration: underline;
 }
 
 .image {
