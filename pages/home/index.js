@@ -10,14 +10,18 @@ import Search from "components/icons/search";
 import useUser from "hooks/useUser";
 
 import styles from "styles/TimeLine.module.css";
-import { fetchLatestDeveets } from "firebase/client";
+import { listenLatestDeveets } from "firebase/client";
 
 export default function Home() {
   const [timeline, setTimeline] = useState([]);
   const user = useUser();
 
   useEffect(() => {
-    user && fetchLatestDeveets().then(setTimeline);
+    let unsubscribe;
+    if (user) {
+      unsubscribe = listenLatestDeveets(setTimeline);
+    }
+    return () => unsubscribe && unsubscribe();
   }, [user]);
 
   return (

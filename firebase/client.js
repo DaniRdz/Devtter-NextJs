@@ -50,19 +50,21 @@ export const addDeveet = ({ avatar, content, userId, userName, img }) => {
   });
 };
 
-export const fetchLatestDeveets = () => {
+const mapDeveetFromFirebase = (doc) => {
+  const data = doc.data();
+  const id = doc.id;
+  const { createdAt } = data;
+
+  return { ...data, id, createdAt: +createdAt.toDate() };
+};
+
+export const listenLatestDeveets = (callback) => {
   return db
     .collection("deveets")
     .orderBy("createdAt", "desc")
-    .get()
-    .then(({ docs }) => {
-      return docs.map((doc) => {
-        const data = doc.data();
-        const id = doc.id;
-        const { createdAt } = data;
-
-        return { ...data, id, createdAt: +createdAt.toDate() };
-      });
+    .onSnapshot(({ docs }) => {
+      const newDeveets = docs.map(mapDeveetFromFirebase);
+      callback(newDeveets);
     });
 };
 
